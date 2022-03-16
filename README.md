@@ -1,4 +1,4 @@
-#Aplicación de Pomodoro
+# Aplicación de Pomodoro
 
 Pomodoro es una técnica de estudio, en que se trabaja y descansa por intervalos de tiempos, para aumentar la productividad.
 
