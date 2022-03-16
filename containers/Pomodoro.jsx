@@ -26,29 +26,37 @@ const Pomodoro = () => {
   const onClickSessionMinus = () => {
     const number = sessionNumber > 1 ? sessionNumber - 1 : sessionNumber;
     setSessionNumber(number);
-    setMinutes(number);
-    setSeconds(0);
+    if (isSession) {
+      setMinutes(number);
+      setSeconds(0);
+    }
   };
 
   const onClickSessionPlus = () => {
     const number = sessionNumber < 120 ? sessionNumber + 1 : sessionNumber;
     setSessionNumber(number);
-    setMinutes(number);
-    setSeconds(0);
+    if (isSession) {
+        setMinutes(number);
+        setSeconds(0);
+      }
   };
 
   const onClickBreakMinus = () => {
     const number = breakNumber > 1 ? breakNumber - 1 : breakNumber;
     setBreakNumber(number);
-    setMinutes(number);
-    setSeconds(0);
+    if (!isSession) {
+        setMinutes(number);
+        setSeconds(0);
+      }
   };
 
   const onClickBreakPlus = () => {
     const number = breakNumber < 120 ? breakNumber + 1 : breakNumber;
-    setMinutes(number);
     setBreakNumber(number);
-    setSeconds(0);
+    if (!isSession) {
+        setMinutes(number);
+        setSeconds(0);
+      }
   };
 
   const counterInterval = () => {

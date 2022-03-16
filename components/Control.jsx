@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Control = ({ label, controlNumber, setControlNumber, disabled, onClickMinus, onClickPlus }) => {
-  return (
+const Control = ({ label, controlNumber, disabled, onClickMinus, onClickPlus }) => {
+    return (
     <div>
       <h2>{label}</h2>
       <button onClick={onClickMinus} disabled={disabled}>
