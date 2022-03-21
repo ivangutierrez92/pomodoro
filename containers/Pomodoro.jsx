@@ -1,14 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import Control from '../components/Control';
+import React, { useState, useEffect, useRef } from 'react';
 import Counter from '../components/Counter';
+import styles from '../styles/Pomodoro.module.css';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import Loading from '../components/Loading';
+import SettingsForm from '../components/SettingsForm';
+import Modal from './Modal';
 
 const Pomodoro = () => {
-  const [sessionNumber, setSessionNumber] = useState(25);
-  const [breakNumber, setBreakNumber] = useState(5);
+  const { item, saveItem, loading, error, sincronizeItem } = useLocalStorage('pomodoro-times', {
+    session: 25,
+    break: 5,
+  });
+
+  const sessionNumber = item?.session;
+  const breakNumber = item?.break;
+
   const [isSession, setIsSession] = useState(true);
   const [started, setStarted] = useState(false);
-  const [minutes, setMinutes] = useState(sessionNumber);
+  const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [formModalOpened, setFormModalOpened] = useState(false);
+
+  const alarmSound = useRef(null);
+
+  useEffect(() => {
+    setMinutes(isSession ? item?.session : item?.break);
+    setSeconds(0);
+  }, [item]);
 
   useEffect(() => {
     if (started) {
@@ -17,52 +37,11 @@ const Pomodoro = () => {
     return () => clearInterval(interval);
   }, [started, seconds]);
 
-  const toggleIsSession = () => {
-    setMinutes(() => (isSession ? breakNumber : sessionNumber));
-    setSeconds(0);
-    setIsSession(session => !session);
-  };
-
-  const onClickSessionMinus = () => {
-    const number = sessionNumber > 1 ? sessionNumber - 1 : sessionNumber;
-    setSessionNumber(number);
-    if (isSession) {
-      setMinutes(number);
-      setSeconds(0);
-    }
-  };
-
-  const onClickSessionPlus = () => {
-    const number = sessionNumber < 120 ? sessionNumber + 1 : sessionNumber;
-    setSessionNumber(number);
-    if (isSession) {
-        setMinutes(number);
-        setSeconds(0);
-      }
-  };
-
-  const onClickBreakMinus = () => {
-    const number = breakNumber > 1 ? breakNumber - 1 : breakNumber;
-    setBreakNumber(number);
-    if (!isSession) {
-        setMinutes(number);
-        setSeconds(0);
-      }
-  };
-
-  const onClickBreakPlus = () => {
-    const number = breakNumber < 120 ? breakNumber + 1 : breakNumber;
-    setBreakNumber(number);
-    if (!isSession) {
-        setMinutes(number);
-        setSeconds(0);
-      }
-  };
-
   const counterInterval = () => {
     if (minutes === 0 && seconds === 0) {
       setMinutes(() => (isSession ? breakNumber - 1 : sessionNumber - 1));
       setSeconds(59);
+      alarmSound.current.play();
       setIsSession(session => !session);
     } else if (seconds === 0) {
       setMinutes(state => state - 1);
@@ -72,38 +51,91 @@ const Pomodoro = () => {
     }
   };
 
+  const toggleIsSession = () => {
+    if (!started || confirm('Esta acción reiniciará el contador ¿Desea continuar?')) {
+      setMinutes(isSession ? breakNumber : sessionNumber);
+      setSeconds(0);
+      setIsSession(session => !session);
+      setStarted(false);
+    }
+  };
+
+  const toggleFormModal = () => {
+    setFormModalOpened(true);
+  };
+
+  const containerColor = isSession
+    ? styles['session_background_primary']
+    : styles['break_background_primary'];
+  const elementColor = isSession
+    ? styles['session_background_secondary']
+    : styles['break_background_secondary'];
+
   return (
-    <div>
-      <div>
-        <Control
-          label="Sesión"
-          controlNumber={sessionNumber}
-          setControlNumber={setSessionNumber}
-          disabled={started}
-          onClickMinus={onClickSessionMinus}
-          onClickPlus={onClickSessionPlus}
-        />
-        <Control
-          label="Descanso"
-          controlNumber={breakNumber}
-          setControlNumber={setBreakNumber}
-          disabled={started}
-          onClickMinus={onClickBreakMinus}
-          onClickPlus={onClickBreakPlus}
-        />
-        <div>
-          <Counter
-            minutes={minutes}
-            seconds={seconds}
-            isSession={isSession}
+    <>
+      {(loading || !item) && !error && <Loading />}
+      {error && <div>Error</div>}
+      {!error && !loading && !!item && (
+        <div className={`${styles.container} ${styles['fade-transition']} ${containerColor}`}>
+          <nav className={styles.navbar}>
+            <button
+              className={`${styles['options-button']}  ${styles['fade-transition']} ${elementColor}`}
+              onClick={toggleFormModal}
+            >
+              <FontAwesomeIcon icon={faGear} />
+            </button>
+          </nav>
+          <h1 className={styles['main-title']}>Pomodoro</h1>
+          <div className={styles['pomodoro-container']}>
+            <div className={styles['tabs-container']}>
+              <button
+                onClick={toggleIsSession}
+                disabled={isSession}
+                className={`${styles.tab} ${isSession && styles['session_background_tertiary']} ${
+                  styles['fade-transition']
+                }`}
+              >
+                Sesión
+              </button>
+              <button
+                onClick={toggleIsSession}
+                disabled={!isSession}
+                className={`${styles.tab} ${!isSession && styles['break_background_tertiary']} ${
+                  styles['fade-transition']
+                } `}
+              >
+                Descanso
+              </button>
+            </div>
+            <div>
+              <Counter
+                minutes={minutes}
+                seconds={seconds}
+                isSession={isSession}
+                setStarted={setStarted}
+              />
+            </div>
+            <audio ref={alarmSound}>
+              <source src="/sounds/alarm-clock-01.mp3" />
+            </audio>
+          </div>
+        </div>
+      )}
+
+      {formModalOpened ? (
+        <Modal>
+          <SettingsForm
+            sessionNumber={sessionNumber}
+            breakNumber={breakNumber}
+            saveItem={saveItem}
+            setSeconds={setSeconds}
+            setModalOpened={setFormModalOpened}
+            started={started}
             setStarted={setStarted}
           />
-        </div>
-        <button onClick={toggleIsSession} disabled={started}>
-          {isSession ? '¡Descansar!' : '¡Trabajar!'}
-        </button>
-      </div>
-    </div>
+        </Modal>
+      ) : null}
+    </>
   );
 };
 

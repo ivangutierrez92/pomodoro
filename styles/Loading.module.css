@@ -1,0 +1,12 @@
+.loading-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(214, 86, 86);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loading-title {
+    color: white
+  }

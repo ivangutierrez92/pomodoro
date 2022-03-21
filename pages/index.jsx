@@ -10,10 +10,10 @@ export default function Home() {
         <title>Pomodoro</title>
         <meta name="description" content="App Pomodoro para mejorar tu productividad!" />
       </Head>
-      <div className={styles.container}>
-        <h1>Pomodoro</h1>
+      <main className={styles.container}>
         <Pomodoro />
-      </div>
+        <section></section>
+      </main>
     </>
   );
 }

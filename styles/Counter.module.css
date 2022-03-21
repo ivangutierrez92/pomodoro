@@ -1,0 +1,16 @@
+.Counter-button {
+  border-radius: 100%;
+  width: 300px;
+  height: 300px;
+  border: 5px solid whitesmoke;
+  background-color: transparent;
+  cursor: pointer;
+  color: whitesmoke;
+  font-size: 4.5rem;
+  font-weight: 800;
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+
+.Counter-button:active {
+  background-color: rgba(0, 0, 0, 20%);
+}

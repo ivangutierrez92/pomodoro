@@ -1,17 +1,15 @@
 import React from 'react';
+import styles from '../styles/Counter.module.css';
 
-const Counter = ({ minutes, seconds, setStarted, isSession }) => {
+const Counter = ({ minutes, seconds, setStarted}) => {
   const onToggleStarted = () => {
     setStarted(started => !started);
   };
 
   return (
     <div>
-      <button type="button" onClick={onToggleStarted}>
-        <p>
+      <button type="button" onClick={onToggleStarted} className={styles['Counter-button']}>
           {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-        </p>
-        <p>{isSession ? 'Sesión' : 'Descanso'}</p>
       </button>
     </div>
   );

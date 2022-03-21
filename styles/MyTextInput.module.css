@@ -1,0 +1,14 @@
+.container {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.text-input {
+    font-size: 1rem;
+    background-color: rgb(221, 220, 220);
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: lighter;
+}
