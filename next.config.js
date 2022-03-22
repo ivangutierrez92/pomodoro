@@ -5,6 +5,7 @@ module.exports = withPWA({
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
   assetPrefix: '.',
+  basePath: '.',
   pwa: {
     dest: 'public',
     register: true,
