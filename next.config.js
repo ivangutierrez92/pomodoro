@@ -4,7 +4,7 @@ const withPWA = require('next-pwa');
 module.exports = withPWA({
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
-  assetPrefix: '.',
+  assetPrefix: '/pomodoro/',
   basePath: '/pomodoro',
   pwa: {
     dest: 'public',

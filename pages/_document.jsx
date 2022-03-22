@@ -4,10 +4,10 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icon.png"></link>
+        <link rel="manifest" href="/pomodoro/manifest.json" />
+        <link rel="apple-touch-icon" href="pomodoro/icon.png"></link>
         <meta name="theme-color" content="#d65656" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="pomodoro/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link

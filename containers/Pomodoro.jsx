@@ -117,7 +117,7 @@ const Pomodoro = () => {
               />
             </div>
             <audio ref={alarmSound}>
-              <source src="/sounds/alarm-clock-01.mp3" />
+              <source src="/pomodoro/sounds/alarm-clock-01.mp3" />
             </audio>
           </div>
         </div>

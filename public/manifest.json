@@ -3,7 +3,7 @@
     "background_color": "#d65656",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "/pomodoro",
     "name": "Pomodoro",
     "short_name": "Pomodoro",
     "description": "Aplicaci\u00f3n Pomodoro, para un mejor ritmo de trabajo.",
