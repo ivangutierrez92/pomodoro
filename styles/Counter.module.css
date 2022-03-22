@@ -6,9 +6,9 @@
   background-color: transparent;
   cursor: pointer;
   color: whitesmoke;
-  font-size: 4.5rem;
+  font-size: 4.3rem;
   font-weight: 800;
-  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-family: 'Courier Prime', monospace;
 }
 
 .Counter-button:active {

@@ -1,1 +1,18 @@
+.info {
+  max-width: 850px;
+  margin: 5rem auto;
+  text-align: left;
+  padding: 0 50px;
+}
+.section-info {
+    margin-top: 5rem;
+}
+.section-info__title::before {
+    content: "🍅";
+}
 
+@media (max-width: 750px) {
+    .info__title {
+        text-align: center;
+    }
+}

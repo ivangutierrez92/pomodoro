@@ -7,9 +7,10 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import Loading from '../components/Loading';
 import SettingsForm from '../components/SettingsForm';
 import Modal from './Modal';
+import Error from '../components/Error';
 
 const Pomodoro = () => {
-  const { item, saveItem, loading, error, sincronizeItem } = useLocalStorage('pomodoro-times', {
+  const { item, saveItem, loading, error } = useLocalStorage('pomodoro-times', {
     session: 25,
     break: 5,
   });
@@ -74,7 +75,7 @@ const Pomodoro = () => {
   return (
     <>
       {(loading || !item) && !error && <Loading />}
-      {error && <div>Error</div>}
+      {error && <Error />}
       {!error && !loading && !!item && (
         <div className={`${styles.container} ${styles['fade-transition']} ${containerColor}`}>
           <nav className={styles.navbar}>
