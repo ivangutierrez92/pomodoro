@@ -30,7 +30,7 @@ export default function Home() {
             <h3 className={styles['section-info__title']}>¿Qué puede hacer esta aplicacion?</h3>
             <p>
               La aplicación ayuda a la ejecución de la técnica Pomodoro, pudiendo alternar entre la
-              sesiónd de trabajo, y el descanso, además se puede configurar cuánto dura la sesión y
+              sesiónd de trabajo y el descanso. Además, se puede configurar cuánto dura la sesión y
               el descanso. Finalmente, la página puede ser instalada como aplicación.
             </p>
           </article>
@@ -39,7 +39,7 @@ export default function Home() {
             <p>
               Cuando estaba aprendiendo desarrollo web, una de las primeras aplicaciones que tuve
               que hacer fue la de Pomodoro. Ahora que tengo algo más de experiencia, decidí que
-              podía mejorar esa aplicación, y generarle algo más de valor, para poder colocarla con
+              podía mejorar esa aplicación y generarle algo más de valor, para poder colocarla con
               orgullo en mi portafolio web. También quiero destacar la genial aplicación{' '}
               <a href="https://pomofocus.io/" target="_blank" rel="noreferrer">
                 pomofocus
