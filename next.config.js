@@ -5,7 +5,7 @@ module.exports = withPWA({
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
   assetPrefix: '.',
-  basePath: '.',
+  basePath: '/pomodoro',
   pwa: {
     dest: 'public',
     register: true,
