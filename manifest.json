@@ -2,7 +2,7 @@
     "theme_color": "#d65656",
     "background_color": "#d65656",
     "display": "standalone",
-    "scope": "/",
+    "scope": "/pomodoro",
     "start_url": "/pomodoro",
     "name": "Pomodoro",
     "short_name": "Pomodoro",
