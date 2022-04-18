@@ -5,9 +5,9 @@ const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.MyTextInput}>
         <label htmlFor={props.id || props.name}>{label}</label>
-        <input className={styles['text-input']} {...field} {...props} />
+        <input className={styles['MyTextInput__input']} {...field} {...props} />
       </div>
     </>
   );

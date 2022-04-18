@@ -12,8 +12,8 @@ const SettingsForm = ({
   setModalOpened,
 }) => {
   return (
-    <div className={styles['form-container']}>
-      <button className={styles['button-close']} onClick={() => setModalOpened(false)}>
+    <div className={styles.FormContainer}>
+      <button className={styles.closeButton} onClick={() => setModalOpened(false)}>
         X
       </button>
       <Formik
@@ -33,7 +33,7 @@ const SettingsForm = ({
         <Form>
           <MyTextInput label="Sesión" name="session" type="number" min={1} max={999} />
           <MyTextInput label="Descanso" name="break" type="number" min={1} max={999} />
-          <button type="submit" className={styles['submit-button']}>
+          <button type="submit" className={styles.submitButton}>
             Guardar
           </button>
         </Form>

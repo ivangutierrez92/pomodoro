@@ -1,4 +1,4 @@
-.Counter-button {
+.Counter__button {
   border-radius: 100%;
   width: 300px;
   height: 300px;
@@ -11,6 +11,6 @@
   font-family: 'Courier Prime', monospace;
 }
 
-.Counter-button:active {
+.Counter__button:active {
   background-color: rgba(0, 0, 0, 20%);
 }

@@ -66,34 +66,34 @@ const Pomodoro = () => {
   };
 
   const containerColor = isSession
-    ? styles['session_background_primary']
-    : styles['break_background_primary'];
+    ? styles['session__background--primary']
+    : styles['break__background--primary'];
   const elementColor = isSession
-    ? styles['session_background_secondary']
-    : styles['break_background_secondary'];
+    ? styles['session__background--secondary']
+    : styles['break__background--secondary'];
 
   return (
     <>
       {(loading || !item) && !error && <Loading />}
       {error && <Error />}
       {!error && !loading && !!item && (
-        <div className={`${styles.container} ${styles['fade-transition']} ${containerColor}`}>
+        <div className={`${styles.Main} ${styles.fadeTransition} ${containerColor}`}>
           <nav className={styles.navbar}>
             <button
-              className={`${styles['options-button']}  ${styles['fade-transition']} ${elementColor}`}
+              className={`${styles.optionsButton}  ${styles.fadeTransition} ${elementColor}`}
               onClick={toggleFormModal}
             >
               <FontAwesomeIcon icon={faGear} />
             </button>
           </nav>
-          <h1 className={styles['main-title']}>Pomodoro</h1>
-          <div className={styles['pomodoro-container']}>
-            <div className={styles['tabs-container']}>
+          <h1 className={styles.mainTitle}>Pomodoro</h1>
+          <div className={styles.Pomodoro}>
+            <div className={styles.tabs}>
               <button
                 onClick={toggleIsSession}
                 disabled={isSession}
-                className={`${styles.tab} ${isSession && styles['session_background_tertiary']} ${
-                  styles['fade-transition']
+                className={`${styles.tab} ${isSession && styles['session__background--tertiary']} ${
+                  styles.fadeTransition
                 }`}
               >
                 Sesión
@@ -101,8 +101,8 @@ const Pomodoro = () => {
               <button
                 onClick={toggleIsSession}
                 disabled={!isSession}
-                className={`${styles.tab} ${!isSession && styles['break_background_tertiary']} ${
-                  styles['fade-transition']
+                className={`${styles.tab} ${!isSession && styles['break__background--tertiary']} ${
+                  styles.fadeTransition
                 } `}
               >
                 Descanso

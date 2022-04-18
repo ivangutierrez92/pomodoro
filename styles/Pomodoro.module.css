@@ -1,4 +1,4 @@
-.main-title {
+.mainTitle {
   font-family: 'Saira Stencil One', cursive;
   color: whitesmoke;
   font-size: 3rem;
@@ -8,11 +8,11 @@
   display: flex;
   justify-content: right;
 }
-.container {
+.Main {
   padding: 1rem 2rem 1rem 2rem;
   min-height: 100vh;
 }
-.options-button {
+.optionsButton {
   border: none;
   cursor: pointer;
   font-size: 1rem;
@@ -20,21 +20,21 @@
   padding: 8px;
   border-radius: 5px;
 }
-.options-button:active {
+.optionsButton:active {
   transform: translateY(3px);
 }
 
-.pomodoro-container {
+.Pomodoro {
   max-width: 800px;
   margin: auto;
 }
 
-.tabs-container {
+.tabs {
   margin: 50px 0;
   display: flex;
   justify-content: space-around;
 }
-.tabs-container > .tab:nth-child(1) {
+.tabs > .tab:nth-child(1) {
   border-right: 3px solid whitesmoke;
 }
 
@@ -53,31 +53,31 @@
   cursor: default;
 }
 
-.session_background_primary {
+.session__background--primary {
   background-color: rgb(214, 86, 86);
 }
 
-.break_background_primary {
+.break__background--primary {
   background-color: rgb(51, 145, 199);
 }
-.session_background_secondary {
+.session__background--secondary {
   background: rgb(231, 123, 123);
 }
 
-.break_background_secondary {
+.break__background--secondary {
   background-color: rgb(128, 190, 226);
 }
 
-.session_background_tertiary {
+.session__background--tertiary {
   background-color: #d43131;
   border-radius: 5px 0 0 0;
 }
 
-.break_background_tertiary {
+.break__background--tertiary {
   background-color: #0e74af;
   border-radius: 0 5px 0 0;
 }
 
-.fade-transition {
+.fadeTransition {
   transition: background-color 0.5s ease-in-out;
 }
