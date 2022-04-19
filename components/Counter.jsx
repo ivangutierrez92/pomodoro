@@ -7,9 +7,9 @@ const Counter = ({ minutes, seconds, setStarted }) => {
   };
 
   return (
-      <button type="button" onClick={onToggleStarted} className={styles['Counter__button']}>
-        {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-      </button>
+    <button type="button" onClick={onToggleStarted} className={styles['Counter__button']}>
+      {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+    </button>
   );
 };
 
