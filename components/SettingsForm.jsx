@@ -8,7 +8,6 @@ const SettingsForm = ({
   breakNumber,
   saveItem,
   started,
-  setStarted,
   setModalOpened,
   stopTimer,
 }) => {
