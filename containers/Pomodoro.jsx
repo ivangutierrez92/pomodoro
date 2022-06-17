@@ -11,57 +11,71 @@ import Error from '../components/Error';
 
 const Pomodoro = () => {
   const { item, saveItem, loading, error } = useLocalStorage('pomodoro-times', {
-    session: 25,
-    break: 5,
+    //Initial values if there isn't data in local storage
+    session: 25 * 60,
+    break: 5 * 60,
   });
 
-  const sessionNumber = item?.session;
-  const breakNumber = item?.break;
+  const normalizeStorageValues = mode => {
+    //if some of the values in storage value is less or more than the min and max values, change to the min or max value
+    if (!!item) {
+      return item[mode] < 60 ? 60 : item[mode] > 999 * 60 ? 999 * 60 : item[mode];
+    }
+  };
+
+  const sessionNumber = normalizeStorageValues('session');
+  const breakNumber = normalizeStorageValues('break');
 
   const [isSession, setIsSession] = useState(true);
   const [started, setStarted] = useState(false);
-  const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [formModalOpened, setFormModalOpened] = useState(false);
-
   const alarmSound = useRef(null);
+  const timer = useRef('');
 
   useEffect(() => {
-    setMinutes(isSession ? item?.session : item?.break);
-    setSeconds(0);
+    setSeconds(normalizeStorageValues(isSession ? 'session' : 'break'));
   }, [item]);
 
-  useEffect(() => {
+  const startOrStop = () => {
     if (started) {
-      const interval = setInterval(counterInterval, 1000);
+      stopTimer();
+    } else {
+      timer.current = setInterval(counterInterval, 1000);
+      setStarted(true);
     }
-    return () => clearInterval(interval);
-  }, [started, seconds]);
+  };
 
   const counterInterval = () => {
-    if (minutes === 0 && seconds === 0) {
-      setMinutes(() => (isSession ? breakNumber - 1 : sessionNumber - 1));
-      setSeconds(59);
-      alarmSound.current.play();
-      setIsSession(session => !session);
-    } else if (seconds === 0) {
-      setMinutes(state => state - 1);
-      setSeconds(59);
-    } else {
-      setSeconds(state => state - 1);
-    }
+    setSeconds(prev => {
+      if (prev > 0) {
+        return prev - 1;
+      } else {
+        setSeconds(() => (isSession ? breakNumber : sessionNumber));
+        alarmSound.current.play();
+        setIsSession(session => !session);
+        return 0;
+      }
+    });
+  };
+
+  const stopTimer = () => {
+    clearInterval(timer.current);
+    setStarted(false);
   };
 
   const toggleIsSession = () => {
-    if (!started || confirm('Esta acción reiniciará el contador ¿Desea continuar?')) {
-      setMinutes(isSession ? breakNumber : sessionNumber);
-      setSeconds(0);
+    if (
+      (!started && seconds == isSession ? sessionNumber : breakNumber) ||
+      confirm('Esta acción reiniciará el contador ¿Desea continuar?')
+    ) {
+      setSeconds(isSession ? breakNumber : sessionNumber);
       setIsSession(session => !session);
-      setStarted(false);
+      stopTimer();
     }
   };
 
-  const toggleFormModal = () => {
+  const openFormModal = () => {
     setFormModalOpened(true);
   };
 
@@ -81,7 +95,7 @@ const Pomodoro = () => {
           <nav className={styles.navbar}>
             <button
               className={`${styles.optionsButton}  ${styles.fadeTransition} ${elementColor}`}
-              onClick={toggleFormModal}
+              onClick={openFormModal}
             >
               <FontAwesomeIcon icon={faGear} />
             </button>
@@ -110,10 +124,10 @@ const Pomodoro = () => {
             </div>
             <div>
               <Counter
-                minutes={minutes}
-                seconds={seconds}
+                minutes={Math.floor(seconds / 60)}
+                seconds={seconds % 60}
                 isSession={isSession}
-                setStarted={setStarted}
+                startOrStop={startOrStop}
               />
             </div>
             <audio ref={alarmSound}>
@@ -126,13 +140,14 @@ const Pomodoro = () => {
       {formModalOpened ? (
         <Modal>
           <SettingsForm
-            sessionNumber={sessionNumber}
-            breakNumber={breakNumber}
+            sessionNumber={Math.floor(sessionNumber / 60)}
+            breakNumber={Math.floor(breakNumber / 60)}
             saveItem={saveItem}
             setSeconds={setSeconds}
             setModalOpened={setFormModalOpened}
             started={started}
             setStarted={setStarted}
+            stopTimer={stopTimer}
           />
         </Modal>
       ) : null}

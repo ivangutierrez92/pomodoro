@@ -10,6 +10,7 @@ const SettingsForm = ({
   started,
   setStarted,
   setModalOpened,
+  stopTimer,
 }) => {
   return (
     <div className={styles.FormContainer}>
@@ -24,8 +25,8 @@ const SettingsForm = ({
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
           if (!started || confirm('Esta acción reiniciará el contador ¿Desea continuar?')) {
-            setStarted(false);
-            saveItem({ session: values.session, break: values.break });
+            saveItem({ session: values.session * 60, break: values.break * 60 });
+            stopTimer();
             setModalOpened(false);
           }
         }}
