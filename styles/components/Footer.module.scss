@@ -1,0 +1,28 @@
+.Footer {
+  padding: 20px 50px 30px 50px;
+  background-color: rgb(245, 241, 241);
+}
+.marketing {
+  display: flex;
+  justify-content: space-between;
+  &__contacto,
+  &__social {
+    margin: 0 auto auto auto;
+    &-icons {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  &__contacto a {
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 750px) {
+  .marketing {
+    flex-direction: column;
+    &__social {
+      margin-bottom: 30px;
+    }
+  }
+}

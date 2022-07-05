@@ -6,9 +6,9 @@
 }
 .sectionInfo {
   margin-top: 5rem;
-}
-.sectionInfo__title::before {
+  &__title::before {
   content: '🍅';
+}
 }
 
 @media (max-width: 750px) {

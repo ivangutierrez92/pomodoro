@@ -1,27 +1,27 @@
-.mainTitle {
-  font-family: 'Saira Stencil One', cursive;
-  color: whitesmoke;
-  font-size: 3rem;
+.Main {
+  padding: 1rem 2rem 1rem 2rem;
+  min-height: 100vh;
+  &__title {
+    font-family: 'Saira Stencil One', cursive;
+    color: whitesmoke;
+    font-size: 3rem;
+  }
 }
 
 .navbar {
   display: flex;
   justify-content: right;
-}
-.Main {
-  padding: 1rem 2rem 1rem 2rem;
-  min-height: 100vh;
-}
-.optionsButton {
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  color: whitesmoke;
-  padding: 8px;
-  border-radius: 5px;
-}
-.optionsButton:active {
-  transform: translateY(3px);
+  &__button--options {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: whitesmoke;
+    padding: 8px;
+    border-radius: 5px;
+  }
+  &__button--options:active {
+    transform: translateY(3px);
+  }
 }
 
 .Pomodoro {
@@ -29,15 +29,14 @@
   margin: auto;
 }
 
-.tabs {
+.Tabs {
   margin: 50px 0;
   display: flex;
   justify-content: space-around;
 }
-.tabs > .tab:nth-child(1) {
+.tab:nth-child(1) {
   border-right: 3px solid whitesmoke;
 }
-
 .tab {
   cursor: pointer;
   background-color: transparent;

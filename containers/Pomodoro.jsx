@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Counter from '../components/Counter';
-import styles from '../styles/Pomodoro.module.css';
+import styles from '../styles/containers/Pomodoro.module.scss';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -94,15 +94,15 @@ const Pomodoro = () => {
         <div className={`${styles.Main} ${styles.fadeTransition} ${containerColor}`}>
           <nav className={styles.navbar}>
             <button
-              className={`${styles.optionsButton}  ${styles.fadeTransition} ${elementColor}`}
+              className={`${styles['navbar__button--options']}  ${styles.fadeTransition} ${elementColor}`}
               onClick={openFormModal}
             >
               <FontAwesomeIcon icon={faGear} />
             </button>
           </nav>
-          <h1 className={styles.mainTitle}>Pomodoro</h1>
+          <h1 className={styles['Main__title']}>Pomodoro</h1>
           <div className={styles.Pomodoro}>
-            <div className={styles.tabs}>
+            <div className={styles.Tabs}>
               <button
                 onClick={toggleIsSession}
                 disabled={isSession}

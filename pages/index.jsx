@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Footer from '../components/Footer';
 import Pomodoro from '../containers/Pomodoro';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/pages/Home.module.scss';
 
 export default function Home() {
   return (

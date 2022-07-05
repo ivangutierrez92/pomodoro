@@ -1,7 +1,7 @@
 import { Form, Formik } from 'formik';
 import React from 'react';
 import MyTextInput from './MyTextInput';
-import styles from '../styles/SettingsForm.module.css';
+import styles from '../styles/components/SettingsForm.module.scss';
 
 const SettingsForm = ({
   sessionNumber,
