@@ -80,11 +80,11 @@ const Pomodoro = () => {
   };
 
   const containerColor = isSession
-    ? styles['session__background--primary']
-    : styles['break__background--primary'];
+    ? styles['session__background']
+    : styles['break__background'];
   const elementColor = isSession
-    ? styles['session__background--secondary']
-    : styles['break__background--secondary'];
+    ? styles['session__background--light']
+    : styles['break__background--light'];
 
   return (
     <>
@@ -106,7 +106,7 @@ const Pomodoro = () => {
               <button
                 onClick={toggleIsSession}
                 disabled={isSession}
-                className={`${styles.tab} ${isSession && styles['session__background--tertiary']} ${
+                className={`${styles.tab} ${isSession && styles['session__background--dark']} ${
                   styles.fadeTransition
                 }`}
               >
@@ -115,7 +115,7 @@ const Pomodoro = () => {
               <button
                 onClick={toggleIsSession}
                 disabled={!isSession}
-                className={`${styles.tab} ${!isSession && styles['break__background--tertiary']} ${
+                className={`${styles.tab} ${!isSession && styles['break__background--dark']} ${
                   styles.fadeTransition
                 } `}
               >

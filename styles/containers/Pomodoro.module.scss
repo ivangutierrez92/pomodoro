@@ -1,10 +1,11 @@
+@import '../variables.scss';
 .Main {
-  padding: 1rem 2rem 1rem 2rem;
   min-height: 100vh;
+  padding: 1rem 2rem 1rem 2rem;
   &__title {
     font-family: 'Saira Stencil One', cursive;
-    color: whitesmoke;
     font-size: 3rem;
+    color: $white;
   }
 }
 
@@ -13,11 +14,11 @@
   justify-content: right;
   &__button--options {
     border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    color: whitesmoke;
-    padding: 8px;
     border-radius: 5px;
+    padding: 8px;
+    font-size: 1rem;
+    color: $white;
+    cursor: pointer;
   }
   &__button--options:active {
     transform: translateY(3px);
@@ -30,51 +31,51 @@
 }
 
 .Tabs {
-  margin: 50px 0;
   display: flex;
   justify-content: space-around;
+  margin: 50px 0;
 }
 .tab:nth-child(1) {
-  border-right: 3px solid whitesmoke;
+  border-right: 3px solid $white;
 }
 .tab {
-  cursor: pointer;
-  background-color: transparent;
-  color: whitesmoke;
-  border: none;
-  font-size: 1.5rem;
   width: 100%;
-  border-bottom: 3px solid whitesmoke;
+  border: none;
+  border-bottom: 3px solid $white;
   padding: 10px;
+  font-size: 1.5rem;
+  background-color: transparent;
+  color: $white;
+  cursor: pointer;
 }
 
 .tab:disabled {
   cursor: default;
 }
 
-.session__background--primary {
-  background-color: rgb(214, 86, 86);
+.session__background {
+  background-color: $main-color;
 }
 
-.break__background--primary {
-  background-color: rgb(51, 145, 199);
+.break__background {
+  background-color: $break-color;
 }
-.session__background--secondary {
-  background: rgb(231, 123, 123);
-}
-
-.break__background--secondary {
-  background-color: rgb(128, 190, 226);
+.session__background--light {
+  background: $main-color-light;
 }
 
-.session__background--tertiary {
-  background-color: #d43131;
+.break__background--light {
+  background-color: $break-color-light
+}
+
+.session__background--dark {
   border-radius: 5px 0 0 0;
+  background-color: $main-color-dark;
 }
 
-.break__background--tertiary {
-  background-color: #0e74af;
+.break__background--dark {
   border-radius: 0 5px 0 0;
+  background-color: $break-color-dark;
 }
 
 .fadeTransition {

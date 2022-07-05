@@ -1,14 +1,14 @@
 .info {
   max-width: 850px;
   margin: 5rem auto;
-  text-align: left;
   padding: 0 50px;
+  text-align: left;
 }
 .sectionInfo {
   margin-top: 5rem;
   &__title::before {
-  content: '🍅';
-}
+    content: '🍅';
+  }
 }
 
 @media (max-width: 750px) {
