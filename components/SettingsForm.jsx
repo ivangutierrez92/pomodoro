@@ -13,7 +13,7 @@ const SettingsForm = ({
 }) => {
   return (
     <div className={styles.Form}>
-      <button className={styles['button--close']} onClick={() => setModalOpened(false)}>
+      <button className={styles['Form__button--close']} onClick={() => setModalOpened(false)}>
         X
       </button>
       <Formik

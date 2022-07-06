@@ -6,14 +6,17 @@
 .marketing {
   display: flex;
   justify-content: space-between;
+
   &__contacto,
   &__social {
     margin: 0 auto auto auto;
-    &-icons {
-      display: flex;
-      justify-content: space-around;
-    }
   }
+
+  &__social-icons {
+    display: flex;
+    justify-content: space-around;
+  }
+
   &__contacto a {
     font-weight: 600;
   }

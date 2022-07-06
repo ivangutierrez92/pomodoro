@@ -1,15 +1,16 @@
 @import '../variables.scss';
 .MyTextInput {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-    &__input {
-        font-size: 1rem;
-        background-color: $gray;
-        border: none;
-        padding: 10px;
-        border-radius: 3px;
-        font-weight: lighter;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+
+  &__input {
+    font-size: 1rem;
+    background-color: $gray;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: lighter;
+  }
 }

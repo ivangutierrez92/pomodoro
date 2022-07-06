@@ -6,12 +6,12 @@
   border-radius: 100%;
   font-size: 4.3rem;
   font-weight: 800;
-  font-family: 'Courier Prime', monospace;  
+  font-family: 'Courier Prime', monospace;
   color: $white;
   background-color: transparent;
   cursor: pointer;
-}
 
-.Counter__button:active {
-  background-color: rgba(0, 0, 0, 20%);
+  &:active {
+    background-color: rgba(0, 0, 0, 20%);
+  }
 }

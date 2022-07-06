@@ -2,9 +2,9 @@
 .Main {
   min-height: 100vh;
   padding: 1rem 2rem 1rem 2rem;
+
   &__title {
     font-family: 'Saira Stencil One', cursive;
-    font-size: 3rem;
     color: $white;
   }
 }
@@ -12,6 +12,7 @@
 .navbar {
   display: flex;
   justify-content: right;
+
   &__button--options {
     border: none;
     border-radius: 5px;
@@ -20,6 +21,7 @@
     color: $white;
     cursor: pointer;
   }
+
   &__button--options:active {
     transform: translateY(3px);
   }
@@ -35,9 +37,11 @@
   justify-content: space-around;
   margin: 50px 0;
 }
+
 .tab:nth-child(1) {
   border-right: 3px solid $white;
 }
+
 .tab {
   width: 100%;
   border: none;
@@ -60,12 +64,13 @@
 .break__background {
   background-color: $break-color;
 }
+
 .session__background--light {
   background: $main-color-light;
 }
 
 .break__background--light {
-  background-color: $break-color-light
+  background-color: $break-color-light;
 }
 
 .session__background--dark {
