@@ -15,7 +15,7 @@ const Footer = () => {
         <div className={styles['marketing__social']}>
           <h2>Encuentrame también en:</h2>
           <div className={styles['marketing__social-icons']}>
-            <a href="https://github.com/llamafluida" target="_blank" rel="noreferrer">
+            <a href="https://github.com/ivangutierrez92" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon={faGithub} className="fa-2x" />
             </a>
             <a
