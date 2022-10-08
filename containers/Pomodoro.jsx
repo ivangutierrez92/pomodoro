@@ -79,9 +79,7 @@ const Pomodoro = () => {
     setFormModalOpened(true);
   };
 
-  const containerColor = isSession
-    ? styles['session__background']
-    : styles['break__background'];
+  const containerColor = isSession ? styles['session__background'] : styles['break__background'];
   const elementColor = isSession
     ? styles['session__background--light']
     : styles['break__background--light'];
